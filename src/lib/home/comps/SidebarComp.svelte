@@ -20,7 +20,7 @@
 	let codeComponents = [
 		{
 			name: 'Home',
-			link: '/',
+			link: '/components',
 			icon: Home
 		},
 		{
