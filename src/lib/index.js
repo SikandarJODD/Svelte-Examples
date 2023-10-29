@@ -4,7 +4,8 @@ import {
     GalleryVerticalEnd,
     PanelTop,
     BoomBoxIcon,
-    Download
+    Download,
+    FileCode2
 } from 'lucide-svelte';
 export let codeComponents = [
     {
@@ -36,5 +37,10 @@ export let codeComponents = [
         name: 'Hero',
         link: '/components/hero',
         icon: BoomBoxIcon
+    },
+    {
+        name: 'Forms',
+        link: '/components/forms',
+        icon: FileCode2
     }
 ];

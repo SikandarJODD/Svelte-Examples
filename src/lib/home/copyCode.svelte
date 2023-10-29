@@ -1,11 +1,13 @@
 <script>
+	import { scale } from 'svelte/transition';
 	import { copy } from 'svelte-copy';
 	import { CheckCircle, Copy } from 'lucide-svelte';
 	export let isClicked = false;
 	export let code = '';
 </script>
 
-<button class="outline-none border-none"
+<button
+	class="outline-none border-none"
 	use:copy={code}
 	on:click={() => {
 		isClicked = true;
@@ -15,8 +17,10 @@
 	}}
 >
 	{#if !isClicked}
-		<Copy size="18" strokeWidth="1.4" color="#000" />
+		<Copy size="20" strokeWidth="1.4" color="#000" />
 	{:else}
-		<CheckCircle size="18" strokeWidth="1.4"  color="#0339FFFF" />
+		<div in:scale >
+			<CheckCircle size="20" strokeWidth="1.4" color="#0339FFFF" />
+		</div>
 	{/if}
 </button>

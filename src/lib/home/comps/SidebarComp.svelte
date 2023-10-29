@@ -9,6 +9,7 @@
 <script>
 	let isMenuOpen = true;
 	import Logo from '$lib/images/logo.png';
+	import { codeComponents } from '$lib';
 	import {
 		LayoutPanelTopIcon,
 		Home,
@@ -17,38 +18,7 @@
 		BoomBoxIcon,
 		Download
 	} from 'lucide-svelte';
-	let codeComponents = [
-		{
-			name: 'Home',
-			link: '/components',
-			icon: Home
-		},
-		{
-			name: 'Install Library',
-			link: '/components/install',
-			icon: Download
-		},
-		{
-			name: 'Navbar',
-			link: '/components/navbar',
-			icon: LayoutPanelTopIcon
-		},
-		{
-			name: 'Footer',
-			link: '/components/footer',
-			icon: GalleryVerticalEnd
-		},
-		{
-			name: 'CTA',
-			link: '/components/cta',
-			icon: PanelTop
-		},
-		{
-			name: 'Hero',
-			link: '/components/hero',
-			icon: BoomBoxIcon
-		}
-	];
+	
 </script>
 
 <div>

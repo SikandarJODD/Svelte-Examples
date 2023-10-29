@@ -1,45 +1,8 @@
 <script>
 	import CompBox from '$lib/home/comps/CompBox.svelte';
-	import {
-		LayoutPanelTopIcon,
-		Home,
-		GalleryVerticalEnd,
-		PanelTop,
-		BoomBoxIcon,
-		Download
-	} from 'lucide-svelte';
-	let codeComponents = [
-		{
-			name: 'Home',
-			link: '/components',
-			icon: Home
-		},
-		{
-			name: 'Install Library',
-			link: '/components/install',
-			icon: Download
-		},
-		{
-			name: 'Navbar',
-			link: '/components/navbar',
-			icon: LayoutPanelTopIcon
-		},
-		{
-			name: 'Footer',
-			link: '/components/footer',
-			icon: GalleryVerticalEnd
-		},
-		{
-			name: 'CTA',
-			link: '/components/cta',
-			icon: PanelTop
-		},
-		{
-			name: 'Hero',
-			link: '/components/hero',
-			icon: BoomBoxIcon
-		}
-	];
+	import { codeComponents } from '$lib';
+	
+	
 </script>
 
 <svelte:head>
