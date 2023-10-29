@@ -31,21 +31,21 @@ export let codeComponents = [
         link: '/components/headnavs',
         icon: Diamond
     },
-    {
-        name: 'Footer',
-        link: '/components/footer',
-        icon: GalleryVerticalEnd
-    },
-    {
-        name: 'CTA',
-        link: '/components/cta',
-        icon: PanelTop
-    },
-    {
-        name: 'Hero',
-        link: '/components/hero',
-        icon: BoomBoxIcon
-    },
+    // {
+    //     name: 'Footer',
+    //     link: '/components/footer',
+    //     icon: GalleryVerticalEnd
+    // },
+    // {
+    //     name: 'CTA',
+    //     link: '/components/cta',
+    //     icon: PanelTop
+    // },
+    // {
+    //     name: 'Hero',
+    //     link: '/components/hero',
+    //     icon: BoomBoxIcon
+    // },
     {
         name: 'Forms',
         link: '/components/forms',

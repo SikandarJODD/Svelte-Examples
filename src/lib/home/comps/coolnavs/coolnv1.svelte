@@ -161,13 +161,13 @@
 			<div class="relative">
 				<button
 					type="button"
-					class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900"
+					class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 border-none outline-none"
 					aria-expanded="false"
 					on:click={() => (isFlyoutOpen = !isFlyoutOpen)}
 				>
 					Product
 					<svg
-						class="h-5 w-5 flex-none text-gray-800"
+						class="{isFlyoutOpen ? "rotate-180 transition-all duration-200":"transition-all duration-200"} h-5 w-5 flex-none text-gray-800"
 						viewBox="0 0 20 20"
 						fill="currentColor"
 						aria-hidden="true"
@@ -181,13 +181,13 @@
 				</button>
 				<div
 					class="{isFlyoutOpen
-						? 'opacity-100 translate-y-0'
-						: 'opacity-0 translate-y-1'} absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5"
+						? 'opacity-100 translate-y-0 visible'
+						: 'opacity-0 translate-y-1 hidden '} absolute -left-8 top-full z-50 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5"
 				>
 					<div class="p-4">
 						{#each navData.products as item}
 							<div
-								class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50"
+								class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50 z-50"
 							>
 								<div
 									class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white"
