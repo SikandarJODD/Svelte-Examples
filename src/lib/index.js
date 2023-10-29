@@ -8,7 +8,8 @@ import {
     FileCode2,
     GalleryThumbnails,
     Videotape,
-    Diamond
+    Diamond,
+    DollarSign
 } from 'lucide-svelte';
 export let codeComponents = [
     {
@@ -30,6 +31,11 @@ export let codeComponents = [
         name: 'Cool Navs - Flyouts',
         link: '/components/headnavs',
         icon: Diamond
+    },
+    {
+        name: 'Pricing Section',
+        link: '/components/pricing',
+        icon: DollarSign
     },
     // {
     //     name: 'Footer',
