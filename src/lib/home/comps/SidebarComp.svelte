@@ -7,7 +7,7 @@
   ```
 -->
 <script>
-	let isMenuOpen = true;
+	let isMenuOpen = false;
 	import Logo from '$lib/images/logo.png';
 	import { codeComponents } from '$lib';
 	import {

@@ -6,7 +6,9 @@ import {
     BoomBoxIcon,
     Download,
     FileCode2,
-    GalleryThumbnails
+    GalleryThumbnails,
+    Videotape,
+    Diamond
 } from 'lucide-svelte';
 export let codeComponents = [
     {
@@ -23,6 +25,11 @@ export let codeComponents = [
         name: 'Navbar',
         link: '/components/navbar',
         icon: LayoutPanelTopIcon
+    },
+    {
+        name: 'Cool Navs - Flyouts',
+        link: '/components/headnavs',
+        icon: Diamond
     },
     {
         name: 'Footer',
@@ -48,5 +55,10 @@ export let codeComponents = [
         name: 'Header',
         link: '/components/header',
         icon: GalleryThumbnails
+    },
+    {
+        name: 'News Letter',
+        link: '/components/newsletter',
+        icon: Videotape
     },
 ];

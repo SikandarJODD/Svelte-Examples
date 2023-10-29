@@ -1,6 +1,6 @@
 <script>
 	import Button from '$components/ui/button/button.svelte';
-	import { allHeads } from '$lib/home/comps/header/allhead';
+	import { allNews } from '$lib/home/comps/news/allNews';
 	import CopyCode from '$lib/home/copyCode.svelte';
 	let isClicked = false;
 </script>
@@ -15,7 +15,7 @@
 		<Button size="sm">Transition</Button>
 	</div>
 	<div>
-		{#each allHeads as nav, index}
+		{#each allNews as nav, index}
 			<div class="my-2 lg:my-7">
 				<div class="flex justify-between items-center">
 					<h3 class="my-2">{index + 1}. {nav.name}</h3>
@@ -23,6 +23,7 @@
 						<CopyCode code={nav.code} {isClicked} />
 					</div>
 				</div>
+				<!-- <p class="mb-2 mt-0">{@html nav.desc}</p> -->
 				<div class="not-prose border border-primary rounded-xl overflow-hidden">
 					<svelte:component this={nav.component} />
 				</div>
