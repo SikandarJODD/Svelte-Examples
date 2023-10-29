@@ -3,6 +3,6 @@
 </script>
 
 <svelte:head>
-	<title>Svelte Examples & Components</title>
+	<title>Svelte Components & Examples</title>
 </svelte:head>
 <Hero />
