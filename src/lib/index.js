@@ -5,7 +5,8 @@ import {
     PanelTop,
     BoomBoxIcon,
     Download,
-    FileCode2
+    FileCode2,
+    GalleryThumbnails
 } from 'lucide-svelte';
 export let codeComponents = [
     {
@@ -42,5 +43,10 @@ export let codeComponents = [
         name: 'Forms',
         link: '/components/forms',
         icon: FileCode2
-    }
+    },
+    {
+        name: 'Header',
+        link: '/components/header',
+        icon: GalleryThumbnails
+    },
 ];
