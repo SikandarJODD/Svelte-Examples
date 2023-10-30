@@ -4,10 +4,12 @@
 	import { CheckCircle, Copy } from 'lucide-svelte';
 	export let isClicked = false;
 	export let code = '';
+	export let colorCode = '#000';
+	export let coText = '';
 </script>
 
 <button
-	class="outline-none border-none"
+	class="px-3 rounded-md flex gap-2 items-center text-primary font-semibold font-mono border border-primary"
 	use:copy={code}
 	on:click={() => {
 		isClicked = true;
@@ -16,10 +18,11 @@
 		}, 1200);
 	}}
 >
+	{coText}
 	{#if !isClicked}
-		<Copy size="20" strokeWidth="1.4" color="#000" />
+		<Copy size="20" strokeWidth="1.4" color={colorCode} />
 	{:else}
-		<div in:scale >
+		<div in:scale>
 			<CheckCircle size="20" strokeWidth="1.4" color="#0339FFFF" />
 		</div>
 	{/if}

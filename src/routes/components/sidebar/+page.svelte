@@ -17,13 +17,13 @@
 	<div class="not-prose flex gap-6 flex-wrap my-10">
 		{#each allSidebar as nav, index}
 			<div
-				class="box w-fit h-36 border border-primary rounded-lg bg-white hover:bg-gray-200/70 shdaow-md shadow-gray-500 flex flex-col justify-between px-5 py-3"
+				class="box w-fit h-36 border border-primary rounded-lg bg-white hover:bg-gray-200/50 shdaow-md shadow-gray-500 flex flex-col justify-between px-5 py-3"
 			>
 				<div>
 					<h3 class="font-bold text-2xl text-center text-primary">{nav.name}</h3>
 				</div>
-				<div class="flex  justify-between">
-					<Button size="sm">Copy Code</Button>
+				<div class="flex justify-between">
+					<CopyCode code={nav.code} coText="copy" />
 					<Button size="sm" href={nav.link} target="_blank">
 						Visit
 						<ExternalLink class="ml-2" size="17" strokeWidth="1.3" />

@@ -1,5 +1,96 @@
 <script>
+	import { page } from '$app/stores';
+	import {
+		CalendarCheck2,
+		Files,
+		FolderClosed,
+		Home,
+		LogOut,
+		PieChart,
+		Settings,
+		User,
+		Users
+	} from 'lucide-svelte';
+
 	let isMobileMenu = false;
+	$: console.log(isMobileMenu);
+	let layoutNavs = [
+		{
+			name: 'Dashboard',
+			link: '/',
+			icon: Home
+		},
+		{
+			name: 'Projects',
+			link: '',
+			icon: FolderClosed
+		},
+		{
+			name: 'Teams',
+			link: '',
+			icon: Users
+		},
+		{
+			name: 'Documents',
+			link: '',
+			icon: Files
+		},
+		{
+			name: 'Reports',
+			link: '',
+			icon: PieChart
+		},
+		{
+			name: 'Calendar',
+			link: '',
+			icon: CalendarCheck2
+		}
+	];
+	let teams = [
+		{
+			name: 'Frontend Team',
+			link: '#',
+			icon: 'F'
+		},
+		{
+			name: 'UI Designers',
+			link: '#',
+			icon: 'U'
+		},
+		{
+			name: 'System Designers',
+			link: '#',
+			icon: 'S'
+		}
+	];
+	let isProfileMenuOpen = false;
+	let profileTabs = [
+		{
+			name: 'Your Profile',
+			link: '#',
+			icon: User
+		},
+		{
+			name: 'Settings',
+			link: '#',
+			icon: Settings
+		},
+		{
+			name: 'Sign out',
+			link: '#',
+			icon: LogOut
+		}
+	];
+	let webdata = {
+		img: 'https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500',
+		profileName: 'Saloni Maheshwari',
+		email: 'Tom Cook',
+		profileImg: 'https://i.pinimg.com/564x/88/db/6f/88db6fd38202de80d7c7c3964783cb04.jpg',
+		profileLink: '#',
+		topic: 'Dashboard'
+	};
+	let input = '';
+	$: routeID = $page.route.id;
 </script>
 
 <div>
@@ -11,16 +102,6 @@
 		role="dialog"
 		aria-modal="true"
 	>
-		<!--
-        Off-canvas menu backdrop, show/hide based on off-canvas menu state.
-  
-        Entering: "transition-opacity ease-linear duration-300"
-          From: "opacity-0"
-          To: "opacity-100"
-        Leaving: "transition-opacity ease-linear duration-300"
-          From: "opacity-100"
-          To: "opacity-0"
-      -->
 		<div
 			class="{isMobileMenu
 				? 'translate-x-0 transition ease-out duration-300 transform '
@@ -32,31 +113,11 @@
 				? 'translate-x-0 transition ease-out duration-300 transform '
 				: '-translate-x-full transition ease-out duration-300 transform'} fixed inset-0 flex"
 		>
-			<!--
-          Off-canvas menu, show/hide based on off-canvas menu state.
-  
-          Entering: "transition ease-in-out duration-300 transform"
-            From: "-translate-x-full"
-            To: "translate-x-0"
-          Leaving: "transition ease-in-out duration-300 transform"
-            From: "translate-x-0"
-            To: "-translate-x-full"
-        -->
 			<div
 				class="{isMobileMenu
 					? 'opacity-100 ease-in-out duration-300'
 					: 'opacity-0 ease-in-out duration-300'}  relative mr-16 flex w-full max-w-xs flex-1"
 			>
-				<!--
-            Close button, show/hide based on off-canvas menu state.
-  
-            Entering: "ease-in-out duration-300"
-              From: "opacity-0"
-              To: "opacity-100"
-            Leaving: "ease-in-out duration-300"
-              From: "opacity-100"
-              To: "opacity-0"
-          -->
 				<div class="absolute left-full top-0 flex w-16 justify-center pt-5">
 					<button type="button" class="-m-2.5 p-2.5" on:click={() => (isMobileMenu = false)}>
 						<span class="sr-only">Close sidebar</span>
@@ -78,205 +139,57 @@
 					class="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4 ring-1 ring-white/10"
 				>
 					<div class="flex h-16 shrink-0 items-center">
-						<img
-							class="h-8 w-auto"
-							src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-							alt="Your Company"
-						/>
+						<img class="h-8 w-auto" src={webdata.img} alt="Your Company" />
 					</div>
 					<nav class="flex flex-1 flex-col">
 						<ul role="list" class="flex flex-1 flex-col gap-y-7">
 							<li>
 								<ul role="list" class="-mx-2 space-y-1">
-									<li>
-										<!-- Current: "bg-gray-800 text-white", Default: "text-gray-400 hover:text-white hover:bg-gray-800" -->
-										<a
-											href="#"
-											class="bg-gray-800 text-white group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-										>
-											<svg
-												class="h-6 w-6 shrink-0"
-												fill="none"
-												viewBox="0 0 24 24"
-												stroke-width="1.5"
-												stroke="currentColor"
-												aria-hidden="true"
+									{#each layoutNavs as item}
+										<li>
+											<!-- Current: "bg-gray-800 text-white", Default: "text-gray-400 hover:text-white hover:bg-gray-800" -->
+											<a
+												href={item.link}
+												class="{routeID === item.link
+													? 'bg-gray-800 text-white'
+													: 'text-gray-400 hover:text-white hover:bg-gray-800'} group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
 											>
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-												/>
-											</svg>
-											Dashboard
-										</a>
-									</li>
-									<li>
-										<a
-											href="#"
-											class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-										>
-											<svg
-												class="h-6 w-6 shrink-0"
-												fill="none"
-												viewBox="0 0 24 24"
-												stroke-width="1.5"
-												stroke="currentColor"
-												aria-hidden="true"
-											>
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"
-												/>
-											</svg>
-											Team
-										</a>
-									</li>
-									<li>
-										<a
-											href="#"
-											class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-										>
-											<svg
-												class="h-6 w-6 shrink-0"
-												fill="none"
-												viewBox="0 0 24 24"
-												stroke-width="1.5"
-												stroke="currentColor"
-												aria-hidden="true"
-											>
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"
-												/>
-											</svg>
-											Projects
-										</a>
-									</li>
-									<li>
-										<a
-											href="#"
-											class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-										>
-											<svg
-												class="h-6 w-6 shrink-0"
-												fill="none"
-												viewBox="0 0 24 24"
-												stroke-width="1.5"
-												stroke="currentColor"
-												aria-hidden="true"
-											>
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
-												/>
-											</svg>
-											Calendar
-										</a>
-									</li>
-									<li>
-										<a
-											href="#"
-											class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-										>
-											<svg
-												class="h-6 w-6 shrink-0"
-												fill="none"
-												viewBox="0 0 24 24"
-												stroke-width="1.5"
-												stroke="currentColor"
-												aria-hidden="true"
-											>
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75"
-												/>
-											</svg>
-											Documents
-										</a>
-									</li>
-									<li>
-										<a
-											href="#"
-											class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-										>
-											<svg
-												class="h-6 w-6 shrink-0"
-												fill="none"
-												viewBox="0 0 24 24"
-												stroke-width="1.5"
-												stroke="currentColor"
-												aria-hidden="true"
-											>
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z"
-												/>
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z"
-												/>
-											</svg>
-											Reports
-										</a>
-									</li>
+												<svelte:component this={item.icon} />
+												{item.name}
+											</a>
+										</li>
+									{/each}
 								</ul>
 							</li>
 							<li>
 								<div class="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
 								<ul role="list" class="-mx-2 mt-2 space-y-1">
-									<li>
-										<!-- Current: "bg-gray-800 text-white", Default: "text-gray-400 hover:text-white hover:bg-gray-800" -->
-										<a
-											href="#"
-											class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-										>
-											<span
-												class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white"
-												>H</span
+									{#each teams as item}
+										<li>
+											<!-- Current: "bg-gray-800 text-white", Default: "text-gray-400 hover:text-white hover:bg-gray-800" -->
+											<a
+												href={item.link}
+												class="{routeID === item.link
+													? 'bg-gray-800 text-white'
+													: 'text-gray-400 hover:text-white hover:bg-gray-800'} group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
 											>
-											<span class="truncate">Heroicons</span>
-										</a>
-									</li>
-									<li>
-										<a
-											href="#"
-											class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-										>
-											<span
-												class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white"
-												>T</span
-											>
-											<span class="truncate">Tailwind Labs</span>
-										</a>
-									</li>
-									<li>
-										<a
-											href="#"
-											class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-										>
-											<span
-												class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white"
-												>W</span
-											>
-											<span class="truncate">Workcation</span>
-										</a>
-									</li>
+												<span
+													class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white"
+													>{item.icon}</span
+												>
+												<span class="truncate">{item.name}</span>
+											</a>
+										</li>
+									{/each}
 								</ul>
 							</li>
 							<li class="mt-auto">
 								<a
-									href="#"
+									href="/"
 									class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
 								>
 									<svg
-										class="h-6 w-6 shrink-0"
+										class="group-hover:rotate-45 transition-all duration-150 h-6 w-6 shrink-0"
 										fill="none"
 										viewBox="0 0 24 24"
 										stroke-width="1.5"
@@ -309,205 +222,57 @@
 		<!-- Sidebar component, swap this element with another sidebar if you like -->
 		<div class="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4">
 			<div class="flex h-16 shrink-0 items-center">
-				<img
-					class="h-8 w-auto"
-					src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-					alt="Your Company"
-				/>
+				<img class="h-8 w-auto" src={webdata.img} alt="Your Company" />
 			</div>
 			<nav class="flex flex-1 flex-col">
 				<ul role="list" class="flex flex-1 flex-col gap-y-7">
 					<li>
 						<ul role="list" class="-mx-2 space-y-1">
-							<li>
-								<!-- Current: "bg-gray-800 text-white", Default: "text-gray-400 hover:text-white hover:bg-gray-800" -->
-								<a
-									href="#"
-									class="bg-gray-800 text-white group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-								>
-									<svg
-										class="h-6 w-6 shrink-0"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke-width="1.5"
-										stroke="currentColor"
-										aria-hidden="true"
+							{#each layoutNavs as item}
+								<li>
+									<!-- Current: "bg-gray-800 text-white", Default: "text-gray-400 hover:text-white hover:bg-gray-800" -->
+									<a
+										href={item.link}
+										class="{routeID === item.link
+											? 'bg-gray-800 text-white transition-all duration-150'
+											: 'text-gray-400 hover:text-white hover:bg-gray-800 transition-all duration-150'} group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
 									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
-										/>
-									</svg>
-									Dashboard
-								</a>
-							</li>
-							<li>
-								<a
-									href="#"
-									class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-								>
-									<svg
-										class="h-6 w-6 shrink-0"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke-width="1.5"
-										stroke="currentColor"
-										aria-hidden="true"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z"
-										/>
-									</svg>
-									Team
-								</a>
-							</li>
-							<li>
-								<a
-									href="#"
-									class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-								>
-									<svg
-										class="h-6 w-6 shrink-0"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke-width="1.5"
-										stroke="currentColor"
-										aria-hidden="true"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z"
-										/>
-									</svg>
-									Projects
-								</a>
-							</li>
-							<li>
-								<a
-									href="#"
-									class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-								>
-									<svg
-										class="h-6 w-6 shrink-0"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke-width="1.5"
-										stroke="currentColor"
-										aria-hidden="true"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"
-										/>
-									</svg>
-									Calendar
-								</a>
-							</li>
-							<li>
-								<a
-									href="#"
-									class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-								>
-									<svg
-										class="h-6 w-6 shrink-0"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke-width="1.5"
-										stroke="currentColor"
-										aria-hidden="true"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H6.75a9.06 9.06 0 011.5.124m7.5 10.376h3.375c.621 0 1.125-.504 1.125-1.125V11.25c0-4.46-3.243-8.161-7.5-8.876a9.06 9.06 0 00-1.5-.124H9.375c-.621 0-1.125.504-1.125 1.125v3.5m7.5 10.375H9.375a1.125 1.125 0 01-1.125-1.125v-9.25m12 6.625v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5a3.375 3.375 0 00-3.375-3.375H9.75"
-										/>
-									</svg>
-									Documents
-								</a>
-							</li>
-							<li>
-								<a
-									href="#"
-									class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-								>
-									<svg
-										class="h-6 w-6 shrink-0"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke-width="1.5"
-										stroke="currentColor"
-										aria-hidden="true"
-									>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z"
-										/>
-										<path
-											stroke-linecap="round"
-											stroke-linejoin="round"
-											d="M13.5 10.5H21A7.5 7.5 0 0013.5 3v7.5z"
-										/>
-									</svg>
-									Reports
-								</a>
-							</li>
+										<svelte:component this={item.icon} strokeWidth="1.34" size="22" />
+										{item.name}
+									</a>
+								</li>
+							{/each}
 						</ul>
 					</li>
 					<li>
 						<div class="text-xs font-semibold leading-6 text-gray-400">Your teams</div>
 						<ul role="list" class="-mx-2 mt-2 space-y-1">
-							<li>
-								<!-- Current: "bg-gray-800 text-white", Default: "text-gray-400 hover:text-white hover:bg-gray-800" -->
-								<a
-									href="#"
-									class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-								>
-									<span
-										class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white"
-										>H</span
+							{#each teams as item}
+								<li>
+									<!-- Current: "bg-gray-800 text-white", Default: "text-gray-400 hover:text-white hover:bg-gray-800" -->
+									<a
+										href={item.link}
+										class="{routeID === item.link
+											? 'bg-gray-800 text-white transition-all duration-100'
+											: 'text-gray-400 hover:text-white hover:bg-gray-800 transition-all duration-100'}  group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
 									>
-									<span class="truncate">Heroicons</span>
-								</a>
-							</li>
-							<li>
-								<a
-									href="#"
-									class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-								>
-									<span
-										class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white"
-										>T</span
-									>
-									<span class="truncate">Tailwind Labs</span>
-								</a>
-							</li>
-							<li>
-								<a
-									href="#"
-									class="text-gray-400 hover:text-white hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold"
-								>
-									<span
-										class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white"
-										>W</span
-									>
-									<span class="truncate">Workcation</span>
-								</a>
-							</li>
+										<span
+											class="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border border-gray-700 bg-gray-800 text-[0.625rem] font-medium text-gray-400 group-hover:text-white"
+											>{item.icon}</span
+										>
+										<span class="truncate">{item.name}</span>
+									</a>
+								</li>
+							{/each}
 						</ul>
 					</li>
 					<li class="mt-auto">
 						<a
-							href="#"
+							href="/"
 							class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white"
 						>
 							<svg
-								class="h-6 w-6 shrink-0"
+								class="group-hover:rotate-45 transition-all duration-150 h-6 w-6 shrink-0"
 								fill="none"
 								viewBox="0 0 24 24"
 								stroke-width="1.5"
@@ -583,6 +348,7 @@
 						placeholder="Search..."
 						type="search"
 						name="search"
+						bind:value={input}
 					/>
 				</form>
 				<div class="flex items-center gap-x-4 lg:gap-x-6">
@@ -615,19 +381,18 @@
 							id="user-menu-button"
 							aria-expanded="false"
 							aria-haspopup="true"
+							on:click={() => (isProfileMenuOpen = !isProfileMenuOpen)}
 						>
 							<span class="sr-only">Open user menu</span>
-							<img
-								class="h-8 w-8 rounded-full bg-gray-50"
-								src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-								alt=""
-							/>
+							<img class="h-8 w-8 rounded-full bg-gray-50" src={webdata.profileImg} alt="" />
 							<span class="hidden lg:flex lg:items-center">
 								<span class="ml-4 text-sm font-semibold leading-6 text-gray-900" aria-hidden="true"
-									>Tom Cook</span
+									>{webdata.profileName}</span
 								>
 								<svg
-									class="ml-2 h-5 w-5 text-gray-400"
+									class="{isProfileMenuOpen
+										? 'rotate-180 transition-all duration-300'
+										: 'transition-all duration-200'} ml-2 h-5 w-5 text-gray-400"
 									viewBox="0 0 20 20"
 									fill="currentColor"
 									aria-hidden="true"
@@ -652,27 +417,27 @@
                   To: "transform opacity-0 scale-95"
               -->
 						<div
-							class="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
+							class="{isProfileMenuOpen
+								? 'transform opacity-100 scale-100 transition ease-out duration-100'
+								: 'transform opacity-0 scale-95 transition ease-out duration-100'} absolute right-0 z-10 mt-2.5 w-36 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
 							role="menu"
 							aria-orientation="vertical"
 							aria-labelledby="user-menu-button"
 							tabindex="-1"
 						>
 							<!-- Active: "bg-gray-50", Not Active: "" -->
-							<a
-								href="#"
-								class="block px-3 py-1 text-sm leading-6 text-gray-900"
-								role="menuitem"
-								tabindex="-1"
-								id="user-menu-item-0">Your profile</a
-							>
-							<a
-								href="#"
-								class="block px-3 py-1 text-sm leading-6 text-gray-900"
-								role="menuitem"
-								tabindex="-1"
-								id="user-menu-item-1">Sign out</a
-							>
+							{#each profileTabs as item}
+								<a
+									href={item.link}
+									class="flex gap-2 px-3 py-1.5 text-sm leading-6 text-gray-900 hover:bg-gray-50 transition-all duration-100"
+									role="menuitem"
+									tabindex="-1"
+									id="user-menu-item-0"
+								>
+									<svelte:component this={item.icon} size="18" strokeWidth="1.3" />
+									{item.name}</a
+								>
+							{/each}
 						</div>
 					</div>
 				</div>
