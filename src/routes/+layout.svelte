@@ -6,7 +6,7 @@
 	$: console.log(isActive);
 </script>
 
-{#if isActive !== 'components' && isActive !== 'examples'}
+{#if isActive !== 'components' && isActive !== 'examples' && isActive !== 'sidebar'}
 	<Navbar />
 {/if}
 <slot />

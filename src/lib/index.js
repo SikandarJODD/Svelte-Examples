@@ -9,7 +9,8 @@ import {
     GalleryThumbnails,
     Videotape,
     Diamond,
-    DollarSign
+    DollarSign,
+    Layout
 } from 'lucide-svelte';
 export let codeComponents = [
     {
@@ -21,6 +22,11 @@ export let codeComponents = [
         name: 'Install Library',
         link: '/components/install',
         icon: Download
+    },
+    {
+        name: 'Sidebar - Responsive ',
+        link: '/components/sidebar',
+        icon: Layout
     },
     {
         name: 'Navbar',

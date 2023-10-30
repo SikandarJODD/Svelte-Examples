@@ -7,7 +7,7 @@
 | Flyouts Navs    | ✅      |
 | Forms           | ✅      |
 | Headers         | ✅      |
-| Pricing Section | ❌      |
+| Pricing Section | ✅      |
 | Sidebars        | ❌      |
 | Heros           | ❌      |
 | News Letter     | ❌      |
@@ -30,4 +30,4 @@ Visit the Project [Link](https://svelte-exonents.vercel.app)
   https://svelte-exonents.vercel.app
 ```
 
-## Working on Pricing Section
+## Working on Sidebars 
