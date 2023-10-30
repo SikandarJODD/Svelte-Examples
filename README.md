@@ -8,7 +8,7 @@
 | Forms           | ✅      |
 | Headers         | ✅      |
 | Pricing Section | ✅      |
-| Sidebars        | ❌      |
+| Sidebars        | ✅      |
 | Heros           | ❌      |
 | News Letter     | ❌      |
 
@@ -30,4 +30,4 @@ Visit the Project [Link](https://svelte-exonents.vercel.app)
   https://svelte-exonents.vercel.app
 ```
 
-## Working on Sidebars 
+## Working on Heros Section 
