@@ -7,11 +7,12 @@ import N6 from "./n6.svelte";
 import N7 from "./n7.svelte";
 
 export let allNavs = [
-    {
-        name: 'Simple Navbar -- Dark',
-        desc: 'Menu Icon on Left with Profile Icon on Right',
-        component: N1,
-        code: `<script>
+  {
+    name: 'Simple Navbar -- Dark',
+    desc: 'Menu Icon on Left with Profile Icon on Right',
+    component: N1,
+    code: `<script>
+        import { slide } from 'svelte/transition';
         import { page } from "$app/stores";
         let nav = {
           title: "Svelte Tailwinds",
@@ -192,7 +193,11 @@ export let allNavs = [
         </div>
       
         <!-- Mobile menu, show/hide based on menu state. -->
-        <div class="sm:hidden {isMobileMenu ? 'block' : 'hidden'}" id="mobile-menu">
+        {#key isMobileMenu}
+        <div class="sm:hidden {isMobileMenu ? 'block' : 'hidden'}" id="mobile-menu"
+        in:slide={{ duration: 300, delay: 50 }}
+			  sout:slide={{ duration: 200 }}
+        >
           <div class="space-y-1 px-2 pb-3 pt-2">
             {#each nav.listnavs as item}
               <a
@@ -205,13 +210,15 @@ export let allNavs = [
             {/each}
           </div>
         </div>
+        {/key}
       </nav>`
-    },
-    {
-        name: 'Simple Navbar -- Light',
-        desc: 'Menu Icon on Right with No Profile Icon',
-        component: N5,
-        code: `<script>
+  },
+  {
+    name: 'Simple Navbar -- Light',
+    desc: 'Menu Icon on Right with No Profile Icon',
+    component: N5,
+    code: `<script>
+        import { slide } from 'svelte/transition';
         import { page } from "$app/stores";
         let nav = {
           title: "Svelte Tailwinds",
@@ -406,7 +413,11 @@ export let allNavs = [
         </div>
       
         <!-- Mobile menu, show/hide based on menu state. -->
-        <div class="sm:hidden {isMobileMenu ? 'block' : 'hidden'}" id="mobile-menu">
+        {#key isMobileMenu}
+        <div class="sm:hidden {isMobileMenu ? 'block' : 'hidden'}" id="mobile-menu"
+          in:slide={{ duration: 300, delay: 50 }}
+			    out:slide={{ duration: 300 }}
+        >
           <div class="space-y-1 pb-3 pt-2">
             <!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
             <!-- <a
@@ -470,15 +481,17 @@ export let allNavs = [
             </div>
           </div>
         </div>
+        {/key}
       </nav>`
-    },
-    {
-        name: 'Menu on Right -- Dark',
-        desc: 'Menu Icon on Right, No Profile icon for Mobile View',
-        component: N2,
-        code: `<!-- Simple Dark -->
+  },
+  {
+    name: 'Menu on Right -- Dark',
+    desc: 'Menu Icon on Right, No Profile icon for Mobile View',
+    component: N2,
+    code: `<!-- Simple Dark -->
         <script>
             import { page } from '$app/stores';
+            import { slide } from 'svelte/transition';
             let nav = {
                 title: 'Svelte Tailwinds',
                 img: 'https://cdn-icons-png.flaticon.com/512/5769/5769490.png',
@@ -662,7 +675,11 @@ export let allNavs = [
             </div>
         
             <!-- Mobile menu, show/hide based on menu state. -->
-            <div class="sm:hidden {isMobileMenu ? 'block' : 'hidden'}" id="mobile-menu">
+            {#key isMobileMenu}
+            <div class="sm:hidden {isMobileMenu ? 'block' : 'hidden'}" id="mobile-menu"
+              in:slide={{ duration: 300, delay: 50 }}
+			        out:slide={{ duration: 300 }}
+            >
                 <div class="space-y-1 px-2 pb-3 pt-2">
                     <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                     {#each nav.listnavs as item}
@@ -723,15 +740,17 @@ export let allNavs = [
                     </div>
                 </div>
             </div>
+            {/key}
         </nav>
         `
-    },
-    {
-        name: 'Menu on Left',
-        desc: 'Menu Icon on Left with Profile Icon on Right -- <code>Light Mode</code>',
-        component: N3,
-        code: `<script>
+  },
+  {
+    name: 'Menu on Left',
+    desc: 'Menu Icon on Left with Profile Icon on Right -- <code>Light Mode</code>',
+    component: N3,
+    code: `<script>
         import { page } from "$app/stores";
+        import { slide } from 'svelte/transition';
         let nav = {
           title: "Svelte Tailwinds",
           img: "https://cdn-icons-png.flaticon.com/512/5769/5769490.png",
@@ -908,7 +927,11 @@ export let allNavs = [
         </div>
       
         <!-- Mobile menu, show/hide based on menu state. -->
-        <div class="sm:hidden {isMobileMenu ? 'block' : 'hidden'}" id="mobile-menu">
+        {#key isMobileMenu}
+        <div class="sm:hidden {isMobileMenu ? 'block' : 'hidden'}" id="mobile-menu"
+        in:slide={{ duration: 300, delay: 50 }}
+			  out:slide={{ duration: 300 }}
+        >
           <div class="space-y-1 pb-4 pt-2">
             {#each nav.listnavs as item}
               <a
@@ -921,14 +944,16 @@ export let allNavs = [
             {/each}
           </div>
         </div>
+        {/key}
       </nav>`
-    },
-    {
-        name: 'Sign Up Included',
-        desc: 'Navbar with Button on Right  -- Sign Up <code>Light Mode</code>',
-        component: N4,
-        code: `<script>
+  },
+  {
+    name: 'Sign Up Included',
+    desc: 'Navbar with Button on Right  -- Sign Up <code>Light Mode</code>',
+    component: N4,
+    code: `<script>
         import { page } from '$app/stores';
+        import { slide } from 'svelte/transition';
         let nav = {
             title: 'Svelte Tailwinds',
             img: 'https://cdn-icons-png.flaticon.com/512/5769/5769490.png',
@@ -1134,7 +1159,11 @@ export let allNavs = [
         </div>
     
         <!-- Mobile menu, show/hide based on menu state. -->
-        <div class="md:hidden {isMobileMenu ? 'block' : 'hidden'}" id="mobile-menu">
+        {#key isMobileMenu}
+        <div class="md:hidden {isMobileMenu ? 'block' : 'hidden'}" id="mobile-menu"
+        in:slide={{ duration: 300, delay: 50 }}
+			out:slide={{ duration: 300 }}
+        >
             <div class="space-y-1 pb-3 pt-2">
                 {#each nav.listnavs as item}
                     <a
@@ -1192,8 +1221,9 @@ export let allNavs = [
                 </div>
             </div>
         </div>
+        {/key}
     </nav>
     `
-    },
+  },
 
 ]

@@ -9,7 +9,9 @@
 </script>
 
 <button
-	class="px-3 rounded-md flex gap-2 items-center text-primary font-semibold font-mono border border-primary"
+	class="px-3 rounded-md flex {coText.length > 2
+		? 'gap-2 font-semibold font-mono border border-primary'
+		: ''} items-center text-primary"
 	use:copy={code}
 	on:click={() => {
 		isClicked = true;
