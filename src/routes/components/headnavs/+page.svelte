@@ -7,7 +7,7 @@
 	let isClicked = false;
 </script>
 
-<div class="prose lg:max-w-full">
+<div class="prose lg:max-w-full dark:prose-invert">
 	<h1>Cool Navs - Flyouts</h1>
 	<p>
 		Easily Editable and Responsive Navbars with <span class="text-primary">Flyouts</span>
@@ -16,7 +16,7 @@
 		<Button size="sm" variant="outline" class="border border-primary">Responsive</Button>
 		<Button size="sm">Svelte Inbuild</Button>
 		<Button size="sm">Easily Customizable</Button>
-		<Button size="sm">Inbuilt Transition - Slide </Button>
+		<Button size="sm">Inbuilt Transition - Slide</Button>
 	</div>
 	<div>
 		{#each allCoolNavs as nav, index}

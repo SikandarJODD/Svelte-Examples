@@ -8,8 +8,11 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		alias: {
-			$components: "./src/lib/components"
+			$components: './src/lib/components'
 		}
+	},
+	vitePlugin: {
+		inspector: true
 	}
 };
 

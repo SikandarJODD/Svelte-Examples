@@ -1,14 +1,12 @@
 <script>
 	import CompBox from '$lib/home/comps/CompBox.svelte';
 	import { codeComponents } from '$lib';
-	
-	
 </script>
 
 <svelte:head>
 	<title>Svelte Components</title>
 </svelte:head>
-<div class="prose lg:max-w-full">
+<div class="prose lg:max-w-full dark:prose-invert">
 	<h1>Svelte Components</h1>
 	<p>
 		Simple components that you can use in your projects. <strong>Tailwind CSS</strong> Components.

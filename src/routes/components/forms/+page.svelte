@@ -8,7 +8,7 @@
 <svelte:head>
 	<title>Svelte Forms</title>
 </svelte:head>
-<div class="prose lg:max-w-full">
+<div class="prose lg:max-w-full dark:prose-invert">
 	<h1>Forms - Login & Registration</h1>
 	<p>
 		<span class="text-primary">Login</span> and <span class="text-primary">Registration</span> forms

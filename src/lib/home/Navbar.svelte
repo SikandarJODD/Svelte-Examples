@@ -5,6 +5,7 @@
 	import Logo from '$lib/images/logo.png';
 	import { slide } from 'svelte/transition';
 	import { ChevronRight, Home, LayoutGrid, User } from 'lucide-svelte';
+	import ToggleMode from './ToggleMode.svelte';
 	let nav = {
 		title: 'Svelte Tailwinds',
 		img: Logo,
@@ -15,12 +16,12 @@
 				icon: Home
 			},
 			{
-				name: 'Examples',
-				link: '/examples',
+				name: 'Shadcn Components',
+				link: '/sh',
 				icon: ChevronRight
 			},
 			{
-				name: 'Components',
+				name: 'Taiwlind Components',
 				link: '/components',
 				icon: LayoutGrid
 			},
@@ -42,8 +43,8 @@
 		<div class="flex h-14 items-center justify-between">
 			<div class="flex items-center w-full">
 				<div class="flex-shrink-0 flex gap-2">
-					<img class="h-6 w-auto" src={nav.img} alt="Svelte Examples" />
-					<h1 class="font-semibold">Svelte - Examples</h1>
+					<!-- <img class="h-6 w-auto" src={nav.img} alt="Svelte Examples" /> -->
+					<h1 class="font-semibold">Svelte - Components</h1>
 				</div>
 				<!-- Change Justify-center to end, start -->
 				<div class="hidden sm:ml-6 sm:flex w-full justify-center">
@@ -52,11 +53,12 @@
 							<a
 								href={item.link}
 								class="{isActive === item.link
-									? ' text-black transition-all duration-150 bg-gray-200/50'
+									? ' text-black transition-all duration-150 bg-gray-200/50 dark:bg-white/90'
 									: 'text-gray-500 hover:text-primary transition-all duration-150 '}  rounded-md px-3 py-2 text-sm font-medium"
 								>{item.name}</a
 							>
 						{/each}
+						<ToggleMode />
 					</div>
 				</div>
 			</div>
@@ -126,6 +128,7 @@
 						{item.name}</a
 					>
 				{/each}
+				<ToggleMode />
 			</div>
 		{/key}
 	</div>

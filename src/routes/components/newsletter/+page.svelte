@@ -5,9 +5,8 @@
 	let isClicked = false;
 </script>
 
-<div class="prose lg:max-w-full">
-	<h1>Headers</h1>
-	<p>Easy to use Headers with Variations</p>
+<div class="prose lg:max-w-full dark:prose-invert">
+	<h1>News Letter</h1>
 	<div class="not-prose flex flex-wrap gap-2">
 		<Button size="sm">Svelte Inbuild</Button>
 		<Button size="sm">Easily Customizable</Button>

@@ -5,7 +5,7 @@
 	let isClicked = false;
 </script>
 
-<div class="prose lg:max-w-full">
+<div class="prose lg:max-w-full dark:prose-invert">
 	<h1>Headers</h1>
 	<p>Easy to use Headers with Variations</p>
 	<div class="not-prose flex flex-wrap gap-2">

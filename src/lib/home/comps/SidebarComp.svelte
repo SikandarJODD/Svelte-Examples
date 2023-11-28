@@ -1,23 +1,7 @@
-<!--
-  This example requires updating your template:
-
-  ```
-  <html class="h-full bg-gray-50">
-  <body class="h-full">
-  ```
--->
 <script>
 	let isMenuOpen = false;
-	import Logo from '$lib/images/logo.png';
 	import { codeComponents } from '$lib';
-	import {
-		LayoutPanelTopIcon,
-		Home,
-		GalleryVerticalEnd,
-		PanelTop,
-		BoomBoxIcon,
-		Download
-	} from 'lucide-svelte';
+	import ToggleMode from '../ToggleMode.svelte';
 </script>
 
 <div>
@@ -164,10 +148,12 @@
 		class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-64 lg:flex-col md:border-r border-slate-300"
 	>
 		<!-- Sidebar component, swap this element with another sidebar if you like -->
-		<div class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white px-6">
+		<div
+			class="flex grow flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-white dark:bg-gray-900 px-6"
+		>
 			<div class="flex h-16 shrink-0 items-center gap-2">
-				<img class="h-6 w-auto" src={Logo} alt="Your Company" />
-				<h1 class="font-semibold">Svelte - Components</h1>
+				<!-- <img class="h-6 w-auto" src={Logo} alt="Your Company" /> -->
+				<a href="/" class="font-bold">Svelte - Components</a>
 			</div>
 			<nav class="flex flex-1 flex-col">
 				<ul role="list" class="flex flex-1 flex-col gap-y-7">
@@ -178,13 +164,17 @@
 									<!-- Current: "bg-gray-50 text-indigo-600", Default: "text-gray-700 hover:text-indigo-600 hover:bg-gray-50" -->
 									<a
 										href={item.link}
-										class=" text-gray-800 hover:text-indigo-600 hover:bg-gray-100/80 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold hover:translate-x-1 duration-150 transition-all"
+										class="dark:text-primary text-gray-800 hover:text-indigo-600 hover:bg-gray-100/80 dark:hover:bg-gray-800 group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold hover:translate-x-1 duration-150 transition-all"
 									>
 										<svelte:component this={item.icon} size="22" class="mr-2" strokeWidth="1.37" />
 										{item.name}
 									</a>
 								</li>
 							{/each}
+							<li class="flex items-center gap-3 ml-2.5 font-bold border-t pt-3 border-primary">
+								Mode :
+								<ToggleMode />
+							</li>
 						</ul>
 					</li>
 				</ul>

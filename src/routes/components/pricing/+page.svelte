@@ -9,7 +9,7 @@
 	<title>Svelte - Pricing</title>
 </svelte:head>
 
-<div class="prose lg:max-w-full">
+<div class="prose lg:max-w-full dark:prose-invert">
 	<h1>Pricing Sections - Tailwind CSS</h1>
 
 	<div class="not-prose flex flex-wrap gap-2">

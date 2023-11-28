@@ -1,14 +1,14 @@
-import Sidebar1 from "./sidebar1.svelte";
-import Sidebar2 from "./sidebar2.svelte";
-import Sidebar3 from "./sidebar3.svelte";
-import Sidebar4 from "./sidebar4.svelte";
+import Sidebar1 from './sidebar1.svelte';
+import Sidebar2 from './sidebar2.svelte';
+import Sidebar3 from './sidebar3.svelte';
+import Sidebar4 from './sidebar4.svelte';
 
 export let allSidebar = [
-    {
-        name: 'Sidebar -- Dark Mode',
-        component: Sidebar1,
-        link: '/sidebar/0',
-        code: `<!-- Dark Side bar with Profile icon on right -->
+	{
+		name: 'Sidebar -- Dark Mode',
+		component: Sidebar1,
+		link: '/sidebar/0',
+		code: `<!-- Dark Side bar with Profile icon on right -->
         <script>
             import { page } from '$app/stores';
             import { CalendarCheck2, Files, FolderClosed, Home, PieChart, Users } from 'lucide-svelte';
@@ -301,12 +301,12 @@ export let allSidebar = [
             </main>
         </div>
         `
-    },
-    {
-        name: 'Resposive Sidebar -- Light Mode',
-        component: Sidebar2,
-        link: '/sidebar/1',
-        code: `<!-- Sidebar in Light Mode - Profile icon on Right -->
+	},
+	{
+		name: 'Resposive Sidebar -- Light Mode',
+		component: Sidebar2,
+		link: '/sidebar/1',
+		code: `<!-- Sidebar in Light Mode - Profile icon on Right -->
         <script>
             import { page } from '$app/stores';
             import { CalendarCheck2, Files, FolderClosed, Home, PieChart, Users } from 'lucide-svelte';
@@ -568,12 +568,12 @@ export let allSidebar = [
             </main>
         </div>
         `
-    },
-    {
-        name: 'Sidebar - Search - Dark Mode',
-        component: Sidebar3,
-        link: '/sidebar/2',
-        code: `<script>
+	},
+	{
+		name: 'Sidebar - Search - Light Mode',
+		component: Sidebar3,
+		link: '/sidebar/2',
+		code: `<script>
         import { page } from '$app/stores';
         import {
             CalendarCheck2,
@@ -1028,12 +1028,12 @@ export let allSidebar = [
         </div>
     </div>
     `
-    },
-    {
-        name: 'Sidebar - Search - Light Mode',
-        component: Sidebar4,
-        link: '/sidebar/3',
-        code: `<script>
+	},
+	{
+		name: 'Sidebar - Search - Dark Mode',
+		component: Sidebar4,
+		link: '/sidebar/3',
+		code: `<script>
         import { page } from '$app/stores';
         import {
             CalendarCheck2,
@@ -1487,5 +1487,5 @@ export let allSidebar = [
         </div>
     </div>
     `
-    },
-]
+	}
+];

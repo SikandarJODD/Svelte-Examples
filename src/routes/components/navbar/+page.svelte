@@ -9,7 +9,7 @@
 	<title>Svelte - Navbars</title>
 </svelte:head>
 
-<div class="prose lg:max-w-full">
+<div class="prose lg:max-w-full dark:prose-invert">
 	<h1>Navbars - Tailwind CSS</h1>
 	<p>
 		Change <code>justify-center</code> to <code>justify-end , justify-start</code> for Positioning the
