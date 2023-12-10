@@ -26,9 +26,9 @@
 			</p>
 
 			<div class="mt-8 flex flex-wrap justify-center gap-4 lg:gap-x-6">
-				<Button size="lg" href="/examples">
+				<Button size="lg" href="/sh">
 					<ChevronRight size="19" strokeWidth="1.4" class="mr-1" />
-					Examples</Button
+					Shadcn - Svelte Components</Button
 				>
 				<Button size="lg" href="/components">
 					<LayoutGrid size="19" strokeWidth="1.4" class="mr-1" />

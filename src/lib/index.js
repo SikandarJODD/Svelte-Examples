@@ -43,21 +43,6 @@ export let codeComponents = [
 		link: '/components/pricing',
 		icon: DollarSign
 	},
-	// {
-	// 	name: 'Footer',
-	// 	link: '/components/footer',
-	// 	icon: GalleryVerticalEnd
-	// },
-	// {
-	// 	name: 'CTA',
-	// 	link: '/components/cta',
-	// 	icon: PanelTop
-	// },
-	// {
-	// 	name: 'Hero',
-	// 	link: '/components/hero',
-	// 	icon: BoomBoxIcon
-	// },
 	{
 		name: 'Sign In Forms',
 		link: '/components/forms',
@@ -72,5 +57,17 @@ export let codeComponents = [
 		name: 'News Letter',
 		link: '/components/newsletter',
 		icon: Videotape
+	}
+];
+export let shComponents = [
+	{
+		name: 'Home',
+		link: '/sh',
+		icon: Home
+	},
+	{
+		name: 'forms',
+		link: '/sh/forms',
+		icon: LayoutPanelTopIcon
 	}
 ];

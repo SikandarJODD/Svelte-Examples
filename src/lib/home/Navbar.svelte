@@ -44,7 +44,7 @@
 			<div class="flex items-center w-full">
 				<div class="flex-shrink-0 flex gap-2">
 					<!-- <img class="h-6 w-auto" src={nav.img} alt="Svelte Examples" /> -->
-					<h1 class="font-semibold">Svelte - Components</h1>
+					<a href="/" class="font-semibold">Svelte - Components</a>
 				</div>
 				<!-- Change Justify-center to end, start -->
 				<div class="hidden sm:ml-6 sm:flex w-full justify-center">

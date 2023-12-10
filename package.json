@@ -42,7 +42,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"bits-ui": "^0.8.4",
+		"bits-ui": "^0.8.5",
 		"clsx": "^2.0.0",
 		"lucide-svelte": "^0.290.0",
 		"mode-watcher": "^0.1.1",

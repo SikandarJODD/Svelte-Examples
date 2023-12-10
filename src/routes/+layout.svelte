@@ -8,7 +8,7 @@
 
 <ModeWatcher />
 
-{#if isActive !== 'components' && isActive !== 'examples' && isActive !== 'sidebar'}
+{#if isActive !== 'components' && isActive !== 'sh' && isActive !== 'sidebar'}
 	<Navbar />
 {/if}
 <slot />
