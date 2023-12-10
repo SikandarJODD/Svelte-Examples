@@ -3,8 +3,7 @@
 	import Checkbox from '$components/ui/checkbox/checkbox.svelte';
 	import Input from '$components/ui/input/input.svelte';
 	import Label from '$components/ui/label/label.svelte';
-	import Separator from '$components/ui/separator/separator.svelte';
-	import { GithubIcon, TwitterIcon, User } from 'lucide-svelte';
+	import { TwitterIcon, User } from 'lucide-svelte';
 </script>
 
 <div class="flex min-h-full">
