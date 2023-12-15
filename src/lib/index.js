@@ -69,5 +69,10 @@ export let shComponents = [
 		name: 'forms',
 		link: '/sh/forms',
 		icon: LayoutPanelTopIcon
+	},
+	{
+		name: 'Navbar',
+		link: '/sh/nav',
+		icon: PanelTop
 	}
 ];
